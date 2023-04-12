@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
 
-    public static String env = System.getProperty("env");
+    public static String env = System.getProperty("devicehost");
 
     @BeforeAll
     static void beforeAll() {

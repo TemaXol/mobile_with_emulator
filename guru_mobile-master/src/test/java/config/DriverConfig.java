@@ -4,7 +4,7 @@ import lombok.Builder;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:${env}.properties"
+        "classpath:${devicehost}.properties"
 })
 public interface DriverConfig extends Config {
 
