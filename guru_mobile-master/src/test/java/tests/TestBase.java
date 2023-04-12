@@ -3,7 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-//import drivers.BrowserstackMobileDriver;
+import drivers.BrowserstackMobileDriver;
 import drivers.LocalMobileDriver;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -20,27 +20,26 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-//        if (env == null) {
-//            env = "android";
-//        }
-//
-//        switch (env) {
-//            case "android_emulator":
-                Configuration.browser = LocalMobileDriver.class.getName();
-//                break;
-//            case "android":
-//                Configuration.browser = BrowserstackMobileDriver.class.getName();
-//                break;
-//            case "ios":
-//                Configuration.browser = BrowserstackMobileDriver.class.getName();
-//                break;
+        if (env == null) {
+            env = "android";
+        }
 
-        Configuration.browserSize = null;
+        switch (env) {
+            case "local":
+                Configuration.browser = LocalMobileDriver.class.getName();
+                break;
+            case "android":
+                Configuration.browser = BrowserstackMobileDriver.class.getName();
+                break;
+            case "ios":
+                Configuration.browser = BrowserstackMobileDriver.class.getName();
+                break;
+
 
         }
 
-//        Configuration.browserSize = null;
-//    }
+        Configuration.browserSize = null;
+    }
 
     @BeforeEach
     void addListener() {
@@ -52,10 +51,17 @@ public class TestBase {
     void afterEach() {
         String sessionId = Selenide.sessionId().toString();
 
-//        Attach.screenshotAs("Last screen");
-//        Attach.pageSource();
+        Attach.pageSource();
         closeWebDriver();
-//        Attach.addVideo(sessionId);
+
+        switch (env) {
+            case "android":
+                Attach.addVideo(sessionId);
+                break;
+            case "iphone":
+                Attach.addVideo(sessionId);
+                break;
+        }
     }
 
 }

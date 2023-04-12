@@ -1,6 +1,5 @@
 package tests;
 
-import config.DriverConfig;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.Pages;
@@ -12,7 +11,6 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.appium.java_client.AppiumBy.accessibilityId;
 import static io.appium.java_client.AppiumBy.id;
 import static io.qameta.allure.Allure.step;
-import static org.openqa.selenium.By.xpath;
 
 public class SearchTests extends TestBase {
 
@@ -37,25 +35,25 @@ public class SearchTests extends TestBase {
     }
 
     @Test
-    @Tag("android")
+    @Tag("local")
     void successfulWikiTest() {
 
-        step("Check "+ pages.pageOne +" text and tap Skip", () -> {
+        step("Check " + pages.pageOne + " text and tap Skip", () -> {
             $(id("org.wikipedia.alpha:id/primaryTextView"))
                     .shouldHave(text(pages.pageOne));
             $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
         });
-        step("Check "+ pages.pageTwo +" text and tap Got It", () -> {
+        step("Check " + pages.pageTwo + " text and tap Got It", () -> {
             $(id("org.wikipedia.alpha:id/view_announcement_text"))
                     .shouldHave(text(pages.pageTwo));
             $(id("org.wikipedia.alpha:id/view_announcement_action_negative")).click();
         });
-        step("Check "+ pages.pageThree +" text and tap Today in Wiki", () -> {
+        step("Check " + pages.pageThree + " text and tap Today in Wiki", () -> {
             $(id("org.wikipedia.alpha:id/view_card_header_title"))
                     .shouldHave(text(pages.pageThree));
             $(id("org.wikipedia.alpha:id/footerActionButton")).click();
         });
-        step("Check "+ pages.pageFour +" text", () ->
+        step("Check " + pages.pageFour + " text", () ->
                 $(id("org.wikipedia.alpha:id/page_toolbar_button_search"))
                         .shouldHave(text(pages.pageFour)));
     }

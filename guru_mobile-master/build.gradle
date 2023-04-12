@@ -46,20 +46,28 @@ dependencies {
 }
 
 tasks.withType(Test) {
-//    systemProperties(System.getProperties())
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 }
 
-//task android(type: Test) {
-//    useJUnitPlatform {
-//        includeTags 'android'
-//    }
-//    systemProperties(System.getProperties())
-//}
-//
-//task ios(type: Test) {
-//    useJUnitPlatform {
-//        includeTags 'ios'
-//    }
-//    systemProperties(System.getProperties())
-//}
+task android(type: Test) {
+    useJUnitPlatform {
+        includeTags 'android'
+    }
+    systemProperties(System.getProperties())
+}
+
+task ios(type: Test) {
+    useJUnitPlatform {
+        includeTags 'ios'
+    }
+    systemProperties(System.getProperties())
+
+
+task local(type: Test) {
+        useJUnitPlatform {
+            includeTags 'local'
+        }
+        systemProperties(System.getProperties())
+    }
+}
