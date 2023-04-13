@@ -50,6 +50,7 @@ dependencies {
             'io.github.bonigarcia:webdrivermanager:5.2.1',
             'org.slf4j:slf4j-simple:2.0.6'
     )
+    runtimeOnly 'org.aspectj:aspectjweaver:1.9.8.M1'
 }
 
 tasks.withType(Test) {
