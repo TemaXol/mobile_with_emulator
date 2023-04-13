@@ -19,14 +19,9 @@ public class SearchTests extends TestBase {
     @Test
     @Tag("android")
     void successfulSearchTest() {
-
-        step("Skip onboarding screen", () ->
-//            back()
-                $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click());
         step("Type search", () -> {
-            open("http://localhost:4723/wd/hub");
             $(accessibilityId("Search Wikipedia")).click();
-            $(id("org.wikipedia.alpha:id/search_src_text")).sendKeys("java");
+            $(id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Java");
         });
         step("Verify content", () -> {
             $$(id("org.wikipedia.alpha:id/page_list_item_title"))
@@ -46,19 +41,20 @@ public class SearchTests extends TestBase {
         step("Check " + pages.pageTwo + " text and tap Got It", () -> {
             $(id("org.wikipedia.alpha:id/view_announcement_text"))
                     .shouldHave(text(pages.pageTwo));
-            $(id("org.wikipedia.alpha:id/view_announcement_action_negative")).click();
-        });
-        step("Check " + pages.pageThree + " text and tap Today in Wiki", () -> {
-            $(id("org.wikipedia.alpha:id/view_card_header_title"))
-                    .shouldHave(text(pages.pageThree));
-            $(id("org.wikipedia.alpha:id/footerActionButton")).click();
+//            $(id("org.wikipedia.alpha:id/view_announcement_action_negative")).click();
+            $(id("org.wikipedia.alpha:id/view_announcement_action_positive")).click();
         });
         step("Check " + pages.pageFour + " text", () ->
-                $(id("org.wikipedia.alpha:id/page_toolbar_button_search"))
+                $(id("org.wikipedia.alpha:id/feed_content_type_title"))
                         .shouldHave(text(pages.pageFour)));
+        back();
+        step("Check " + pages.pageThree + " tap on the image", () -> {
+            $(id("org.wikipedia.alpha:id/view_card_header_title"))
+                    .shouldHave(text(pages.pageThree));
+        });
     }
 
-    @Tag("android")
+    @Tag("android1")
     @Test
     void checkGoogle() {
 
