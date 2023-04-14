@@ -56,7 +56,7 @@ public class LocalMobileDriver implements WebDriverProvider {
     private String getAppPath() {
         String appUrl = "https://github.com/wikimedia/apps-android-wikipedia/" +
                 "releases/download/latest/app-alpha-universal-release.apk";
-        String appPath = "src/test/resources/apps/app-alpha-universal-release.apk";
+        String appPath = "src/test/resources/apps/dodoapp.apk";
 
         File app = new File(appPath);
         if (!app.exists()) {
