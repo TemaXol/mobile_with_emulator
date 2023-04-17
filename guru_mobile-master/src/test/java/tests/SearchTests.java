@@ -9,12 +9,10 @@ import utils.RandomData;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.appium.java_client.AppiumBy.accessibilityId;
 import static io.appium.java_client.AppiumBy.id;
 import static io.qameta.allure.Allure.step;
-import static org.openqa.selenium.By.xpath;
 
 public class SearchTests extends TestBase {
 
@@ -24,7 +22,7 @@ public class SearchTests extends TestBase {
     RandomData randomData = new RandomData();
 
     @Test
-    @Tag("android")
+    @Tag("android1")
     void successfulSearchTest() {
         step("Type search", () -> {
             $(accessibilityId("Search Wikipedia")).click();
@@ -37,11 +35,11 @@ public class SearchTests extends TestBase {
     }
 
     @Test
-    @Tag("local")
+    @Tag("android")
     void successCountrySelect() {
 
         step("Check correct selecting Country", () -> {
-           elements.selectRus();
+            elements.selectRus();
             elements.firstTitleCheck(randomData.firstTit);
             elements.deliveryCheck(randomData.delivery);
             elements.onDinnerCheck(randomData.onDinner);
@@ -50,23 +48,44 @@ public class SearchTests extends TestBase {
     }
 
     @Test
-    @Tag("local1")
+    @Tag("local")
     void successCitySelect() {
 
         step("Check " + pages.pageOne + " text and tap Skip", () -> {
-            sleep(3000);
-            $(xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ViewSwitcher/android.widget.FrameLayout/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[10]    ")).click();
-
+            elements.selectRus();
+            elements.firstTitleCheck(randomData.firstTit);
         });
         step("Check " + pages.pageTwo + " text and tap Got It", () -> {
-            $(id("ru.dodopizza.app:id/delivery_button")).click();
-//            $(id("org.wikipedia.alpha:id/view_announcement_action_negative")).click();
-            $(id("ru.dodopizza.app:id/delivery_location_address")).sendKeys("Moscow-city");
-
+            elements.selectDeliver();
+            elements.checkAddress(randomData.address);
+            elements.selectLocation(randomData.location);
         });
         step("Check " + pages.pageFour + " text", () ->
-                $(id("ru.dodopizza.app:id/delivery_location_title")).click());
-        sleep(3000);
+            elements.clickOnLocation());
+            elements.checkTown(randomData.town);
+    }
+
+    @Test
+    @Tag("local ")
+    void makeOrder() {
+
+        step("Open App and select location", () -> {
+            elements.selectRus();
+            elements.selectDeliver();
+            elements.selectLocation(randomData.location);
+            elements.clickOnLocation();
+            elements.checkTown(randomData.town);
+        });
+        step("Select Combo menu item", () -> {
+            elements.selectComboItem();
+            elements.checkCombo(randomData.comboSale);
+
+        });
+        step("Open sale Combo", () -> {
+            elements.selectCombo();
+            elements.checkBanner(randomData.pizzaBanner);
+         });
+
     }
 
 //    @Test
@@ -109,7 +128,7 @@ public class SearchTests extends TestBase {
     }
 
     @Test()
-    @Tag("android")
+    @Tag("android1")
     void checkSettingsTest() {
         step("Type search", () -> {
             $(id("org.wikipedia.alpha:id/menu_overflow_button")).click();
