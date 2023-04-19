@@ -49,19 +49,19 @@ public class TestBase {
 
     @AfterEach
     void afterEach() {
-        String sessionId = Selenide.sessionId().toString();
+    //        String sessionId = Selenide.sessionId().toString();
 
         Attach.pageSource();
         closeWebDriver();
-
-        switch (env) {
-            case "android":
-                Attach.addVideo(sessionId);
-                break;
-            case "iphone":
-                Attach.addVideo(sessionId);
-                break;
-        }
+//
+//        switch (env) {
+//            case "android":
+//                Attach.addVideo(sessionId);
+//                break;
+//            case "iphone":
+//                Attach.addVideo(sessionId);
+//                break;
+//        }
     }
 
 }

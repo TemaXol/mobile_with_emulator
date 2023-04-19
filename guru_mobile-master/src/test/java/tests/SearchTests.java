@@ -22,7 +22,7 @@ public class SearchTests extends TestBase {
     RandomData randomData = new RandomData();
 
     @Test
-    @Tag("android1")
+    @Tag("local")
     void successfulSearchTest() {
         step("Type search", () -> {
             $(accessibilityId("Search Wikipedia")).click();
@@ -35,7 +35,7 @@ public class SearchTests extends TestBase {
     }
 
     @Test
-    @Tag("android")
+    @Tag("local")
     void successCountrySelect() {
 
         step("Check correct selecting Country", () -> {
