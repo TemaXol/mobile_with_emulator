@@ -6,36 +6,74 @@ import pages.Elements;
 import pages.Pages;
 import utils.RandomData;
 
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
-import static io.appium.java_client.AppiumBy.accessibilityId;
-import static io.appium.java_client.AppiumBy.id;
 import static io.qameta.allure.Allure.step;
 
 public class SearchTests extends TestBase {
 
     Pages pages = new Pages();
     Elements elements = new Elements();
-
     RandomData randomData = new RandomData();
 
     @Test
-    @Tag("local")
-    void successfulSearchTest() {
-        step("Type search", () -> {
-            $(accessibilityId("Search Wikipedia")).click();
-            $(id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Java");
+    @Tag("android")
+    void checkTollBar() {
+        step("Select Catalog", () -> {
+            elements.skipAdd();
+            elements.selectCatalog();
         });
-        step("Verify content", () -> {
-            $$(id("org.wikipedia.alpha:id/page_list_item_title"))
-                    .shouldHave(sizeGreaterThan(0));
+        step("Select Map Item", () -> {
+            elements.selectMap();
+            elements.checkSale(randomData.saleVcus);
+        });
+        step("Select Profile", () -> {
+            elements.selectProfile();
+            elements.checkSale(randomData.saleVcus);
+        });
+        step("select Support", () -> {
+            elements.selectSupport();
+            elements.checkSupport(randomData.support);
         });
     }
 
     @Test
-    @Tag("local")
+    @Tag("android")
+    void checkInsertNumberPage() {
+        step("Select Map Item", () -> {
+            elements.skipAdd();
+            elements.selectMap();
+            elements.checkSale(randomData.saleVcus);
+        });
+        step("Check insert number page", () -> {
+            elements.inputNumberPage();
+            elements.checkAgreement(randomData.agreementText);
+        });
+        step("Check back from the Numbers page", () -> {
+            elements.clickBackButton();
+            elements.checkSale(randomData.saleVcus);
+        });
+    }
+
+
+    @Test
+    @Tag("android")
+    void checkSupport() {
+        step("Select Support Item", () -> {
+            elements.skipAdd();
+            elements.selectSupport();
+            elements.checkSupport(randomData.support);
+        });
+        step("Check support chat", () -> {
+            elements.selectSupportChat();
+            elements.checkSupportTitle(randomData.supportTitle);
+        });
+        step("Return to support", () -> {
+            elements.clickBackFromChat();
+            elements.checkSupport(randomData.support);
+        });
+    }
+
+    @Test
+    @Tag("local1")
     void successCountrySelect() {
 
         step("Check correct selecting Country", () -> {
@@ -48,7 +86,7 @@ public class SearchTests extends TestBase {
     }
 
     @Test
-    @Tag("local")
+    @Tag("local1")
     void successCitySelect() {
 
         step("Check " + pages.pageOne + " text and tap Skip", () -> {
@@ -61,12 +99,12 @@ public class SearchTests extends TestBase {
             elements.selectLocation(randomData.location);
         });
         step("Check " + pages.pageFour + " text", () ->
-            elements.clickOnLocation());
-            elements.checkTown(randomData.town);
+                elements.clickOnLocation());
+        elements.checkTown(randomData.town);
     }
 
     @Test
-    @Tag("local ")
+    @Tag("local1")
     void makeOrder() {
 
         step("Open App and select location", () -> {
@@ -84,73 +122,7 @@ public class SearchTests extends TestBase {
         step("Open sale Combo", () -> {
             elements.selectCombo();
             elements.checkBanner(randomData.pizzaBanner);
-         });
-
-    }
-
-//    @Test
-//    @Tag("local")
-//    void successfulWikiTest() {
-//
-//        step("Check " + pages.pageOne + " text and tap Skip", () -> {
-//            $(id("org.wikipedia.alpha:id/primaryTextView"))
-//                    .shouldHave(text(pages.pageOne));
-//            $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
-//        });
-//        step("Check " + pages.pageTwo + " text and tap Got It", () -> {
-//            $(id("org.wikipedia.alpha:id/view_announcement_text"))
-//                    .shouldHave(text(pages.pageTwo));
-////            $(id("org.wikipedia.alpha:id/view_announcement_action_negative")).click();
-//            $(id("org.wikipedia.alpha:id/view_announcement_action_positive")).click();
-//        });
-//        step("Check " + pages.pageFour + " text", () ->
-//                $(id("org.wikipedia.alpha:id/feed_content_type_title"))
-//                        .shouldHave(text(pages.pageFour)));
-//        back();
-//        step("Check " + pages.pageThree + " tap on the image", () -> {
-//            $(id("org.wikipedia.alpha:id/view_card_header_title"))
-//                    .shouldHave(text(pages.pageThree));
-//        });
-//    }
-
-    @Tag("android1")
-    @Test
-    void checkGoogle() {
-
-        step("Type search", () -> {
-            $(accessibilityId("Search Wikipedia")).click();
-            $(id("org.wikipedia.alpha:id/search_src_text")).sendKeys("google");
         });
-        step("Verify content", () -> {
-            $$(id("org.wikipedia.alpha:id/page_list_item_title"))
-                    .shouldHave(sizeGreaterThan(0));
-        });
-    }
 
-    @Test()
-    @Tag("android1")
-    void checkSettingsTest() {
-        step("Type search", () -> {
-            $(id("org.wikipedia.alpha:id/menu_overflow_button")).click();
-        });
-        step("Check button log in", () -> {
-            $(id("org.wikipedia.alpha:id/explore_overflow_settings")).shouldHave(text("Settings"));
-            $(id("org.wikipedia.alpha:id/explore_overflow_settings")).click();
-        });
-        step("Verify content", () -> {
-            $(id("android:id/title")).shouldHave(text("Wikipedia language"));
-        });
-    }
-
-    @Test()
-    @Tag("ios")
-    void loginTestFlight() {
-
-        step("Type search", () -> {
-            $(accessibilityId("Text Button")).click();
-            $(accessibilityId("Text Input")).sendKeys("test@browserstack.com");
-        });
-        step("Verify content found", () ->
-                $(accessibilityId("Text Output")).shouldBe(visible));
     }
 }

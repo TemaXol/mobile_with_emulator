@@ -10,4 +10,8 @@ public class RandomData {
     public String town = "Москва";
     public String comboSale = "Комбо от 599 ₽";
     public String pizzaBanner = "Ветчина и грибы";
+    public String saleVcus = "Персональные скидки от ВкусВилла";
+    public String support = "Поддержка";
+    public String agreementText = "Нажимая кнопку «Продолжить», соглашаюсь с офертой и политикой конфиденциальности.";
+    public String supportTitle = "Написать ВВ";
 }

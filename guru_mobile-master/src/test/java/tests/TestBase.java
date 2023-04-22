@@ -34,8 +34,6 @@ public class TestBase {
             case "ios":
                 Configuration.browser = BrowserstackMobileDriver.class.getName();
                 break;
-
-
         }
 
         Configuration.browserSize = null;
@@ -49,19 +47,19 @@ public class TestBase {
 
     @AfterEach
     void afterEach() {
-    //        String sessionId = Selenide.sessionId().toString();
+        String sessionId = Selenide.sessionId().toString();
 
         Attach.pageSource();
         closeWebDriver();
-//
-//        switch (env) {
-//            case "android":
-//                Attach.addVideo(sessionId);
-//                break;
-//            case "iphone":
-//                Attach.addVideo(sessionId);
-//                break;
-//        }
+
+        switch (env) {
+            case "android":
+                Attach.addVideo(sessionId);
+                break;
+            case "iphone":
+                Attach.addVideo(sessionId);
+                break;
+        }
     }
 
 }
