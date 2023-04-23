@@ -73,7 +73,7 @@ public class SearchTests extends TestBase {
     }
 
     @Test
-    @Tag("local1")
+    @Tag("local")
     void successCountrySelect() {
 
         step("Check correct selecting Country", () -> {
@@ -86,7 +86,7 @@ public class SearchTests extends TestBase {
     }
 
     @Test
-    @Tag("local1")
+    @Tag("local")
     void successCitySelect() {
 
         step("Check " + pages.pageOne + " text and tap Skip", () -> {
@@ -104,7 +104,7 @@ public class SearchTests extends TestBase {
     }
 
     @Test
-    @Tag("local1")
+    @Tag("local")
     void makeOrder() {
 
         step("Open App and select location", () -> {
