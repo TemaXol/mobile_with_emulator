@@ -65,17 +65,9 @@ task android(type: Test) {
     systemProperties(System.getProperties())
 }
 
-task ios(type: Test) {
-    useJUnitPlatform {
-        includeTags 'ios'
-    }
-    systemProperties(System.getProperties())
-
-
 task local(type: Test) {
         useJUnitPlatform {
             includeTags 'local'
         }
         systemProperties(System.getProperties())
     }
-}
