@@ -1,4 +1,4 @@
-## Automated tests for 
+## Automated mobile tests for 
 <img title="main_logo" src="media/main_logo.png">
 <a name="Ссылка"></a>
 ## Content
@@ -23,7 +23,10 @@
 <code><img width="5%" title="IntelliJ IDEA" src="media/logo/Idea.svg"></code>
 <code><img width="5%" title="Java" src="media/logo/Java.svg"></code>
 <code><img width="5%" title="Junit5" src="media/logo/Junit5.svg"></code>
+<code><img width="5%" title="Appium" src="media/logo/Appium.svg"></code>
+<code><img width="5%" title="Browserstack" src="media/logo/Browserstack.svg"></code>
 <code><img width="5%" title="Gradle" src="media/logo/Gradle.svg"></code>
+<code><img width="5%" title="Android Studio" src="media/logo/Android-studio.svg"></code>
 <code><img width="5%" title="Selenide" src="media/logo/Selenide.svg"></code>
 <code><img width="5%" title="GitHub" src="media/logo/GitHub.svg"></code>
 <code><img width="5%" title="Jenkins" src="media/logo/Jenkins_logo.svg"></code>
