@@ -41,12 +41,12 @@
 ## :bookmark_tabs: List of checks:
 ## E2E Tests
 
-- [x] City Selection Check
-- [x] Checking for wrong city selection
-- [x] Checking the choice of three pizzas
-- [x] Dessert Selection Check
-- [x] Checking the selection of snacks
-- [x] Checking pizza size selection
+- [x] Checking Tollbar
+- [x] Checking insert number page
+- [x] Checking Support page
+- [x] Success country select
+- [x] Success city select
+- [x] Make an order
 
 <a id="run"></a>
 ## :computer: Running tests from the terminal
