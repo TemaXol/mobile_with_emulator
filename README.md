@@ -1,4 +1,5 @@
-## Automated tests for https://dodopizza.ru/
+## Automated tests for 
+<img width="4%" title="main_logo" src="media/main_logo.png">
 <a name="Ссылка"></a>
 ## Content
 
