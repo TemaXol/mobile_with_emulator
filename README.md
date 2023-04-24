@@ -52,19 +52,16 @@
 ## :computer: Running tests from the terminal
 
 ```bash
-gradle clean project_test
+gradle clean $(ENV) -Ddevicehost=$(ENV)
 ```
 
 <a id="remote"></a>
 ### Remote running tests
 
 ```bash
-clean
-project_test
--Dremote=${SELENOID_URL}
--Dbrowser_version=${BROWSER_VERSION}
--Dbrowser=${BROWSER}
--Dbrowser_size=${BROWSER_SIZE}
+clean 
+$(ENV) 
+-Ddevicehost=$(ENV)
 ```
 
 <a id="jenkins-report"></a>
