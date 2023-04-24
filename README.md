@@ -1,5 +1,5 @@
 ## Automated tests for 
-<img width="4%" title="main_logo" src="media/main_logo.png">
+<img title="main_logo" src="media/main_logo.png">
 <a name="Ссылка"></a>
 ## Content
 
