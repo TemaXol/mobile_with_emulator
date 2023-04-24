@@ -12,8 +12,8 @@
 - <a href="#allure-testops">Integration with Allure TestOps</a>
 - <a href="#jira">Integration with Jira</a>
 - <a href="#telegram">Integration with Telegram</a>
-- <a href="#appium">Test video</a>
-- <a href="#browserStack">Test video</a>
+- <a href="#appium">Test video 1</a>
+- <a href="#browserStack">Test video 2</a>
 
 
 <a id="tools"></a>
@@ -112,7 +112,6 @@ After passing all the tests, an automatic report is sent to the <code>Telegram</
 
 <a id="appium"></a>
 ## <img width="4%" title="Appium" src="media/logo/Appium.svg"> Test running example in Android studio/Appium
-A video is attached to each test in the report.
 
 <p align="center">
   <img title="Selenoid Video" src="media/video/test1.gif">
