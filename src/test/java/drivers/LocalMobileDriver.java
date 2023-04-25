@@ -48,15 +48,13 @@ public class LocalMobileDriver implements WebDriverProvider {
                 .setApp(getAppPath())
                 .setAppPackage(config.getAppPackage())
                 .setAppActivity(config.getAppActivity());
-        //ru.dodopizza.app
-        //ru.dodopizza.app.presentation.main.MainActivity
         return new AndroidDriver(getAppiumServerUrl(), options);
     }
 
     private String getAppPath() {
         String appUrl = "https://github.com/wikimedia/apps-android-wikipedia/" +
                 "releases/download/latest/app-alpha-universal-release.apk";
-        String appPath = "src/test/resources/apps/sbcs.apk";
+        String appPath = "src/test/resources/apps/vkusvill.apk";
 
         File app = new File(appPath);
         if (!app.exists()) {
