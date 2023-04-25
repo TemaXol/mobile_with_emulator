@@ -106,7 +106,7 @@ From <code><strong>Jenkins</strong></code> it is possible to switch to reports g
 After passing all the tests, an automatic report is sent to the <code>Telegram</code> messenger
 
 <p align="center">
-<img title="Telegram Notifications" src="media/logo/telegram4.png" width="500">
+<img title="Telegram Notifications" src="media/telegram.png" width="500">
 </p>
 
 
